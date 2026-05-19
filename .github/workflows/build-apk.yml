@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build Flutter APK
 
 on:
   push:
@@ -9,15 +9,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: subosito/flutter-action@v2
-      with:
-        flutter-version: 'stable'
-    - name: Create Android project structure
-      run: flutter create . --platforms android
-    - run: flutter pub get
-    - run: flutter build apk --release
-    - uses: actions/upload-artifact@v4
-      with:
-        name: app-release
-        path: build/app/outputs/flutter-apk/app-release.apk
+      - uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.22.0'   # 指定具体版本，避免自动解析失败
+          channel: 'stable'
+
+      - run: flutter pub get
+
+      - run: flutter build apk --debug
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: love-letter-debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
