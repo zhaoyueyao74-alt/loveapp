@@ -14,8 +14,14 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.22.0'   # 指定具体版本，避免自动解析失败
+          flutter-version: '3.22.0'
           channel: 'stable'
+
+      - name: Generate Android project structure
+        run: |
+          # 如果 android 文件夹不存在，则创建完整的 Flutter 项目
+          # 这会自动生成 android/ 目录，同时保留现有的 lib/ 和 pubspec.yaml
+          flutter create --platforms=android --no-overwrite . || true
 
       - run: flutter pub get
 
