@@ -1,0 +1,23 @@
+name: love_letter_app
+description: 520 专属小情书
+version: 1.0.0
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  google_fonts: ^4.0.3   # 方便使用手写风格字体
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  # 如果需要自定义手写字体，可以在这里添加，例如：
+  # fonts:
+  #   - family: HandWrite
+  #     fonts:
+  #       - asset: assets/fonts/handwrite.ttf
